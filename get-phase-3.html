@@ -1,0 +1,83 @@
+<script type="text/javascript">
+    RED.nodes.registerType('get-phase-3',{
+        category: 'multimeter modular',
+        color: '#B0E0E6',
+        defaults: {
+            name:{ value: "" },
+            // mapeamento:{ value:"", type: "mapping-get-phase-3" },
+            // websocket:{ type: "jig-web-socket", required: true },
+            // AC_mode:{ value:"" },
+            // channel_number:{ value:"" },
+            // scale: { value:"" },
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-bars",
+        label: function() { return this.name || "get-phase-3" },
+        paletteLabel: "get-phase-3",
+        // oneditprepare: function() {
+        //     var ports = []
+        //     var self = this
+
+        //     $.getJSON('getPhase3',function(data) {
+        //         ports = data  
+        //         var portType = "custom";
+        //         for (var i in ports) {
+        //             if (self.channel_number == ports[i].value) {
+        //                 portType = self.channel_number;
+        //             }
+        //         }
+        //         $("#node-config-input-port").typedInput({
+        //             default: self.channel_number,
+        //             types:ports
+        //         });
+        //     })
+        //     $("#node-input-mapeamento").val($("#node-input-mapeamento option:first").val());
+        // },
+        // oneditsave: function() {
+        //     var mytype = $("#node-config-input-port").typedInput('type');
+
+        //     $("#node-config-input-port").typedInput('value', mytype);
+        //     this.channel_number = $("#node-config-input-port").typedInput('value');
+        // }
+    });
+
+</script>
+
+<script type="text/html" data-template-name="get-phase-3">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <br>
+    <!-- <div class="form-row">
+        <label for="node-input-AC_mode"><i class="fa fa-sliders"></i> AC mode</label>
+        <select id="node-input-AC_mode" style="width:16%">
+            <option value="true" selected>True</option> 
+            <option value="false">False</option>
+        </select>
+        <label for="node-input-scale" style="margin-left: 27%"><i class="fa fa-expand"></i> Scale</label>
+        <select id="node-input-scale" style="width:13%; margin-left:-10%">
+            <option value="300" selected>300</option> 
+            <option value="30">30</option>
+            <option value="6">6</option>
+          </select>
+    </div> -->
+    <!-- <div class="form-row">
+        <label for="node-input-channel_number"><i class="fa fa-list-ul"></i> Channel number</label>
+        <input type="text" id="node-config-input-port" style="width:63%">
+        <div style="width:20px; margin-left:420px; margin-top:-34px" selected>
+            <input type="text" id="node-input-mapeamento" placeholder="mapeamento">
+        </div>
+    </div> -->
+    <!-- <div class="form-row node-input-websocket" style="margin-top: 20px">
+        <label for="node-input-websocket"><i class="fa fa-random"></i> Websocket config</label>
+        <input type="text" id="node-input-websocket" style="width: 230px">
+    </div> -->
+</script>
+
+<script type="text/html" data-help-name="get-phase-3">
+    <p>Working on it...</p>
+</script>
+
+
