@@ -4,76 +4,226 @@
         color: '#C0C0C0',
         defaults: {
             name:{ value: "" },
-            // mapeamento:{ value:"", type: "mapping-get-phase-3" },
-            // websocket:{ type: "jig-web-socket", required: true },
-            // AC_mode:{ value:"" },
-            // channel_number:{ value:"" },
-            // scale: { value:"" },
+            compare_selectA: {value:"interval", required:true},
+            maxValueA: {value: null},
+            minValueA: {value: null},
+
+            compare_selectB: {value:"interval", required:true},
+            maxValueB: {value: null},
+            minValueB: {value: null},
+
+            compare_selectC: {value:"interval", required:true},
+            maxValueC: {value: null},
+            minValueC: {value: null}
         },
         inputs:1,
         outputs:1,
-        icon: "./icons/Get Phase 3.svg",
+        icon: "Get_Phase_3.svg",
         label: function() { return this.name || "Get Phase 3" },
         paletteLabel: "Get Phase 3",
-        // oneditprepare: function() {
-        //     var ports = []
-        //     var self = this
+        oneditprepare: function() {
+            var node = this;
+            $("#node-input-compare_selectA").on("change", function(e) {
+                var compare = $(this).val();
+                if (compare === "interval") {
+                    // $(".node-input-equal-to").hide();
+                    $(".node-input-max-valueA").show();
+                    $(".node-input-min-valueA").show();
+                }
 
-        //     $.getJSON('getPhase3',function(data) {
-        //         ports = data  
-        //         var portType = "custom";
-        //         for (var i in ports) {
-        //             if (self.channel_number == ports[i].value) {
-        //                 portType = self.channel_number;
-        //             }
-        //         }
-        //         $("#node-config-input-port").typedInput({
-        //             default: self.channel_number,
-        //             types:ports
-        //         });
-        //     })
-        //     $("#node-input-mapeamento").val($("#node-input-mapeamento option:first").val());
-        // },
-        // oneditsave: function() {
-        //     var mytype = $("#node-config-input-port").typedInput('type');
+                if (compare === "maxValue") {
+                    // $(".node-input-equal-toA").hide();
+                    $(".node-input-max-valueA").show();
+                    $(".node-input-min-valueA").hide();
+                }
+                if (compare === "minValue") {
+                    // $(".node-input-equal-toA").hide();
+                    $(".node-input-max-valueA").hide();
+                    $(".node-input-min-valueA").show();
+                }
+            });
 
-        //     $("#node-config-input-port").typedInput('value', mytype);
-        //     this.channel_number = $("#node-config-input-port").typedInput('value');
-        // }
+            $("#node-input-compare_selectB").on("change", function(e) {
+                var compare = $(this).val();
+                if (compare === "interval") {
+                    // $(".node-input-equal-to").hide();
+                    $(".node-input-max-valueB").show();
+                    $(".node-input-min-valueB").show();
+                }
+
+                if (compare === "maxValue") {
+                    // $(".node-input-equal-toA").hide();
+                    $(".node-input-max-valueB").show();
+                    $(".node-input-min-valueB").hide();
+                }
+                if (compare === "minValue") {
+                    // $(".node-input-equal-toA").hide();
+                    $(".node-input-max-valueB").hide();
+                    $(".node-input-min-valueB").show();
+                }
+            });
+
+            $("#node-input-compare_selectC").on("change", function(e) {
+                var compare = $(this).val();
+                if (compare === "interval") {
+                    // $(".node-input-equal-to").hide();
+                    $(".node-input-max-valueC").show();
+                    $(".node-input-min-valueC").show();
+                }
+
+                if (compare === "maxValue") {
+                    // $(".node-input-equal-toA").hide();
+                    $(".node-input-max-valueC").show();
+                    $(".node-input-min-valueC").hide();
+                }
+                if (compare === "minValue") {
+                    // $(".node-input-equal-toA").hide();
+                    $(".node-input-max-valueC").hide();
+                    $(".node-input-min-valueC").show();
+                }
+            });
+        },
     });
-
 </script>
 
+<style>
+    label{
+        width: 50% !important;
+        margin-bottom: 2px !important;
+    }
+
+    .hr-full{
+        width: 100% !important;
+    }
+
+    hr {
+    width: 40% !important;
+    float: left !important;
+    }
+
+    .hr-div-get-phase3{
+        display: flex !important;
+        justify-content: space-between !important;
+        margin-top: 30px !important;
+    }
+
+    .optional{
+        height: max-content !important;
+        margin-top: 10px !important;
+    }
+
+    .descript{
+        text-align: center;
+    }
+
+    .columm{
+        display: flex !important;
+        flex-direction: column !important;
+    }
+</style>
+
 <script type="text/html" data-template-name="get-phase-3">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <div class="form-row columm">
+        <strong class="descript">
+            A comparation is made with the measured tri-phase value.
+        </strong>
+    </div>
+    <div class="form-row columm">
+        <label style="width: auto;" for="node-input-compare_selectA"><i class="icon-tag"></i>Phase-A comparison type:</label>
+        <select id="node-input-compare_selectA" style="width:170px;">
+            <!-- <option value="equalTo">Equal to</option> -->
+            <option value="interval">Interval A</option>
+            <option value="maxValue">Maximum value A (<)</option>
+            <option value="minValue">Minimum value A (>)</option>  
+        </select>
+    </div>
+    <div class="form-row columm" style="display: flex;">
+        <div class=box>
+            <div class="node-input-min-valueA" style="display: none; width: min-content; float: left; margin-right: 40px;">
+                <div class="columm">
+                    <label for="node-input-minValueA" style="width: max-content !important;"><i class="icon-tag"></i>Minimum Value: </label>
+                    <input type="number" id="node-input-minValueA" style=" width:70px !important ">
+                </div>  
+            </div>
+
+            <div class="node-input-max-valueA" style="display: none;">
+                <div class="columm">
+                    <label for="node-input-maxValueA" style="width: max-content !important"><i class="icon-tag"></i>Maximum Value: </label>
+                    <input type="number" id="node-input-maxValueA" style=" width:70px !important ">
+                </div>  
+            </div>
+        </div>
+    </div>
+
+
+    <hr class="hr-full">
+
+    <div class="form-row columm">
+        <label style="width: auto;" for="node-input-compare_selectB"><i class="icon-tag"></i>Phase-B comparison type:</label>
+        <select id="node-input-compare_selectB" style="width:170px;">
+            <!-- <option value="equalTo">Equal to</option> -->
+            <option value="interval">Interval B</option>
+            <option value="maxValue">Maximum value B (<)</option>
+            <option value="minValue">Minimum value B (>)</option>  
+        </select>
+    </div>
+    <div class="form-row columm" style="display: flex;">
+        <div class=box>
+            <div class="node-input-min-valueB" style="display: none; width: min-content; float: left; margin-right: 40px;">
+                <div class="columm">
+                    <label for="node-input-minValueB" style="width: max-content !important;"><i class="icon-tag"></i>Minimum Value: </label>
+                    <input type="number" id="node-input-minValueB" style=" width:70px !important ">
+                </div>  
+            </div>
+
+            <div class="node-input-max-valueB" style="display: none;">
+                <div class="columm">
+                    <label for="node-input-maxValueB" style="width: max-content !important"><i class="icon-tag"></i>Maximum Value: </label>
+                    <input type="number" id="node-input-maxValueB" style=" width:70px !important ">
+                </div>  
+            </div>
+        </div>
+    </div>
+
+
+
+    <hr class="hr-full">
+
+    <div class="form-row columm">
+        <label style="width: auto;" for="node-input-compare_selectC"><i class="icon-tag"></i>Phase-C comparison type:</label>
+        <select id="node-input-compare_selectC" style="width:170px;">
+            <!-- <option value="equalTo">Equal to</option> -->
+            <option value="interval">Interval C</option>
+            <option value="maxValue">Maximum value C (<)</option>
+            <option value="minValue">Minimum value C (>)</option>  
+        </select>
+    </div>
+    <div class="form-row columm" style="display: flex;">
+        <div class=box>
+            <div class="node-input-min-valueC" style="display: none; width: min-content; float: left; margin-right: 40px;">
+                <div class="columm">
+                    <label for="node-input-minValueC" style="width: max-content !important;"><i class="icon-tag"></i>Minimum Value: </label>
+                    <input type="number" id="node-input-minValueC" style=" width:70px !important ">
+                </div>  
+            </div>
+
+            <div class="node-input-max-valueC" style="display: none;">
+                <div class="columm">
+                    <label for="node-input-maxValueC" style="width: max-content !important"><i class="icon-tag"></i>Maximum Value: </label>
+                    <input type="number" id="node-input-maxValueC" style=" width:70px !important ">
+                </div>  
+            </div>
+        </div>
+    </div>
+    <div class="hr-div-get-phase3">
+        <hr>
+        <span class="optional">Optional</span>
+        <hr>
+    </div>
+    <div class="form-row columm">
+        <label style="width: 50% !important;" for="node-input-name" ><i class="fa fa-tag"></i> Component Nickname</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
-    <br>
-    <!-- <div class="form-row">
-        <label for="node-input-AC_mode"><i class="fa fa-sliders"></i> AC mode</label>
-        <select id="node-input-AC_mode" style="width:16%">
-            <option value="true" selected>True</option> 
-            <option value="false">False</option>
-        </select>
-        <label for="node-input-scale" style="margin-left: 27%"><i class="fa fa-expand"></i> Scale</label>
-        <select id="node-input-scale" style="width:13%; margin-left:-10%">
-            <option value="300" selected>300</option> 
-            <option value="30">30</option>
-            <option value="6">6</option>
-          </select>
-    </div> -->
-    <!-- <div class="form-row">
-        <label for="node-input-channel_number"><i class="fa fa-list-ul"></i> Channel number</label>
-        <input type="text" id="node-config-input-port" style="width:63%">
-        <div style="width:20px; margin-left:420px; margin-top:-34px" selected>
-            <input type="text" id="node-input-mapeamento" placeholder="mapeamento">
-        </div>
-    </div> -->
-    <!-- <div class="form-row node-input-websocket" style="margin-top: 20px">
-        <label for="node-input-websocket"><i class="fa fa-random"></i> Websocket config</label>
-        <input type="text" id="node-input-websocket" style="width: 230px">
-    </div> -->
 </script>
 
 <script type="text/html" data-help-name="get-phase-3">
