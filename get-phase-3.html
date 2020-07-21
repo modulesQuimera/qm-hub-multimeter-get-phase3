@@ -1,9 +1,11 @@
 <script type="text/javascript">
     RED.nodes.registerType('get-phase-3',{
         category: 'multimeter modular',
-        color: '#C0C0C0',
+        color: '#32CD32',
         defaults: {
             name:{ value: "" },
+            slot:{value:"", required:true},
+
             compare_selectA: {value:"interval", required:true},
             maxValueA: {value: null},
             minValueA: {value: null},
@@ -18,8 +20,8 @@
         },
         inputs:1,
         outputs:1,
-        icon: "Get_Phase_3.svg",
-        label: function() { return this.name || "Get Phase 3" },
+        icon: "Multimeter_Modular.svg",
+        label: function() { return this.name ? "Get Phase 3 - " + this.name: "Get Phase 3" },
         paletteLabel: "Get Phase 3",
         oneditprepare: function() {
             var node = this;
@@ -125,8 +127,12 @@
 <script type="text/html" data-template-name="get-phase-3">
     <div class="form-row columm">
         <strong class="descript">
-            A comparation is made with the measured tri-phase value.
+            Measure all phases.
         </strong>
+    </div>
+    <div class="form-row columm">
+        <label  for="node-input-slot"><i class="fa fa-sliders"></i> Slot</label>
+        <input min="0" type="number" id="node-input-slot" style="width:20%;">
     </div>
     <div class="form-row columm">
         <label style="width: auto;" for="node-input-compare_selectA"><i class="icon-tag"></i>Phase-A comparison type:</label>
@@ -227,7 +233,7 @@
 </script>
 
 <script type="text/html" data-help-name="get-phase-3">
-    <p>Working on it...</p>
+    <p>Measure all phases</p>
 </script>
 
 
