@@ -1,6 +1,6 @@
 {
   "name": "qm-multimeter-get-phase3",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "multimeter get-phase-3 module - Node-Red",
   "main": "get-phase-3.js",
   "scripts": {
