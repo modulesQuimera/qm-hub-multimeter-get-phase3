@@ -1,6 +1,6 @@
 {
   "name": "qm-multimeter-get-phase3",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "multimeter get-phase-3 module - Node-Red",
   "main": "get-phase-3.js",
   "scripts": {
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/modulesQuimera/qm-hub-multimeter-get-phase-3.git"
+    "url": "git+https://github.com/modulesQuimera/qm-multimeter-get-phase-3.git"
   },
   "keywords": ["quimera", "hub", "JIG"],
   "author": "HUB-LSE",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/modulesQuimera/qm-hub-multimeter-get-phase-3/issues"
+    "url": "https://github.com/modulesQuimera/qm-multimeter-get-phase-3/issues"
   },
-  "homepage": "https://github.com/modulesQuimera/qm-hub-multimeter-get-phase-3#readme",
+  "homepage": "https://github.com/modulesQuimera/qm-multimeter-get-phase-3#readme",
   "node-red": {
     "nodes": {
      "get-phase-3": "get-phase-3.js"

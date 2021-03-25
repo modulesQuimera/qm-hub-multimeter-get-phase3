@@ -4,7 +4,6 @@ module.exports = function(RED) {
     var mapeamentoNode;
 
     function multipleGetPhase3(self, file, slot, currentMode){
-        console.log("entoruuuu")
         for(var g=0; g<self.qtdGetPhase3; g++){
             var _phaseA_n = {};
             var _phaseB_n = {};
@@ -215,7 +214,6 @@ module.exports = function(RED) {
             }
             globalContext.set("exportFile", file);
             node.status({fill:"green", shape:"dot", text:"done"}); // seta o status pra waiting
-            console.log(command)
             send(msg)
         });
     }
